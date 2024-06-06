@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import DoneIcon from '@mui/icons-material/Done';
 import { Button } from '@mui/material';
+import { submitDemoForm } from './apis/form';
 
 export default function FormTable({rows,setRows,editRow, updateRow}) {
 const intialValues = {
@@ -25,7 +26,7 @@ const handleUpdate = (data) =>{
   setRows(updatedRows)
 }
    const [formData,setFormData] = React.useState(intialValues)
-   const handleSubmit = (e) => {
+   const handleSubmit = async(e) => {
       e.preventDefault();
       if(formData.id){
         handleUpdate(formData)
@@ -34,6 +35,8 @@ const handleUpdate = (data) =>{
         formData['id']= Math.random().toFixed(3) *100
         setRows([...rows,formData])
       }
+      const response = await submitDemoForm(formData)
+      console.log(response)
       setFormData(intialValues)
 
    }
