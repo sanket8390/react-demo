@@ -2,23 +2,9 @@ import express from 'express';
 
 const app = express();
 
-// app.get('/', (req,res) => {
-//    res.send('Server is ready');
-// });
 
 app.get('/api/data', (req, res) => {
-   const data = [
-      {
-         id: 1,
-         name: 'Sanket bhawar',
-         email: 'sanket@gmail.com'
-      },
-      {
-         id: 2,
-         name: 'Sagar shelke',
-         email: 'sagar@gmail.com'
-      }
-   ];
+   const data = [];
    res.send(data);
 });
 
